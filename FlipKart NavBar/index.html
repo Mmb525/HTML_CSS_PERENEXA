@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipKart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .row {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: auto 0;
+            /* justify-content: space-between; */
+            border-bottom: 1px solid;
+        }
+
+        .menu-bar {
+            /* background: blue; */
+            display: flex;
+            width: 80%;
+            justify-content: space-evenly;
+        }
+
+        .menu-bar .search-bar {
+            width: 50%;
+        }
+
+        .menu-bar .search-bar input {
+            height: 30px;
+            width: 90%;
+        }
+
+        .other-itmes {
+            display: flex;
+            height: 30px;
+            justify-content: space-evenly;
+            gap: 20px;
+            transition: all ease 2;
+        }
+
+        .dropdown {
+            position: absolute;
+            display: none;
+            height: 100px;
+            background: gray;
+            width: 120px;
+        }
+        .dropdown >ul>li
+        {
+            height: 30px;
+        }
+        .last:hover>.dropdown {
+            display: block;
+        }
+        .login:hover{
+            background: blue;
+            border-radius: 2px;
+            color: white;
+            align-items: center;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="row">
+                <div class="log">
+                    <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+                        alt="Logo">
+                </div>
+                <div class="menu-bar">
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="" id="" placeholder="Search for Products, Barnd and More.">
+                    </div>
+                    <div class="other-itmes">
+                        <div class="menu-items login">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Login</span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="menu-items">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span>Cart</span>
+                        </div>
+                        <div class="menu-items">
+                            <i class="fa-solid fa-shop"></i>
+                            <span>Become a Seller</span>
+                        </div>
+                        <div class="menu-items last">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <div class="dropdown">
+                                <ul>
+                                    <li>
+                                        something
+                                    </li>
+                                    <li>
+                                        something
+                                    </li>
+                                    <li>
+                                        something
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+
+</html>
