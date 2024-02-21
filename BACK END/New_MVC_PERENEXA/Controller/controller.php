@@ -19,8 +19,9 @@ class controller extends Model
                     break;
                 case '/registration':
                     if (isset($_REQUEST['Submit'])) {
-                        $Reg_Data = $_REQUEST;
-                        $this->register($Reg_Data);
+                        $data = $_REQUEST;
+                        $table_name = "user_data";
+                        $this->insert_into($data, $table_name);
                     }
                     require_once("View/header.php");
                     require_once("View/contact/registration.php");
@@ -75,11 +76,38 @@ class controller extends Model
                     require_once("View/Admin_Dashboard/main.php");
                     require_once("View/Admin_Dashboard/last.php");
                     break;
-                    
-                    case '/Product_Upload':
-                        require_once("View/Admin_Dashboard/header.php");
-                        require_once("View/Admin_Dashboard/Product_Upload.php");
-                        require_once("View/Admin_Dashboard/last.php");
+
+                case '/Product_Upload':
+                    if (isset($_REQUEST['upload'])) {
+                        if (isset($_FILES)) {
+                            if ($_FILES['Product_Image']['error'] == 0) {
+                                // echo"hello";
+                                
+                                
+                                $image = time() . $_FILES['Product_Image']['name'];
+                                
+                                move_uploaded_file($_FILES['Product_Image']['tmp_name'], "Uploaded_Product/$image");
+                                $data2["Product_Image"]=$image;
+                            }
+                        }
+                        echo"<pre>";
+                        $data1[]= $_REQUEST ;
+                        // print_r(array_merge($data2,$data1[0]));
+                        $data = array_merge($data2,$data1[0]);
+                        // exit;
+                        // foreach($data as $value)
+                        // {
+                        //     $Data = $value;
+                        // }
+                        // print_r($Data);
+                        // echo"$Data";
+                        $table_name = "products";
+                        $this->insert_into($data,$table_name);
+
+                    }
+                    require_once("View/Admin_Dashboard/header.php");
+                    require_once("View/Admin_Dashboard/Product_Upload.php");
+                    require_once("View/Admin_Dashboard/last.php");
                     break;
             }
 

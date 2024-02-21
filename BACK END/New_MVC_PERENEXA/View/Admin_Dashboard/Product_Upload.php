@@ -18,8 +18,8 @@
                 </div>
                 <div class="input-field">
                  
-                    <label for="Product_Upload">Product Upload</label>
-                    <input type="file" name="Product_Upload">
+                    <label for="Product_Image">Product Upload</label>
+                    <input type="file" name="Product_Image">
                 </div>
                
                     <button type="submit" name="upload" class="button">Upload</button>
