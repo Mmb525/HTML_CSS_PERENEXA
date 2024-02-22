@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+
+
+
+
+
 require_once("Model/model.php");
 class controller extends Model
 {
@@ -17,11 +24,17 @@ class controller extends Model
                     require_once("view/home/testimonial.php");
                     require_once("View/footer.php");
                     break;
-                case '/registration':
+                case '/Registration':
                     if (isset($_REQUEST['Submit'])) {
                         $data = $_REQUEST;
                         $table_name = "user_data";
-                        $this->insert_into($data, $table_name);
+                        // $this->insert_into($data, $table_name);
+                        setcookie("Username", $_REQUEST['User_Name'], time()+3600);
+                        // echo"<pre>";
+                        // print_r($_COOKIE);
+                        // print_r($_REQUEST);
+                        // exit;
+                        header("location:home");
                     }
                     require_once("View/header.php");
                     require_once("View/contact/registration.php");
@@ -40,6 +53,8 @@ class controller extends Model
 
 
                 case '/shop':
+
+                    $response = $this->select("products");
                     require_once("View/header.php");
                     require_once("View/shop.php");
                     require_once("View/footer.php");
@@ -67,6 +82,8 @@ class controller extends Model
                     break;
 
                 case '/cart':
+                    //     print_r($_REQUEST);
+                    $data = $this->selectwhere("products", $_REQUEST);
                     require_once("View/header.php");
                     require_once("View/single.php");
                     require_once("View/footer.php");
@@ -82,18 +99,15 @@ class controller extends Model
                         if (isset($_FILES)) {
                             if ($_FILES['Product_Image']['error'] == 0) {
                                 // echo"hello";
-                                
-                                
                                 $image = time() . $_FILES['Product_Image']['name'];
-                                
                                 move_uploaded_file($_FILES['Product_Image']['tmp_name'], "Uploaded_Product/$image");
-                                $data2["Product_Image"]=$image;
+                                $data2["Product_Image"] = $image;
                             }
                         }
-                        echo"<pre>";
-                        $data1[]= $_REQUEST ;
+                        // echo "<pre>";
+                        $data1[] = $_REQUEST;
                         // print_r(array_merge($data2,$data1[0]));
-                        $data = array_merge($data2,$data1[0]);
+                        $data = array_merge($data2, $data1[0]);
                         // exit;
                         // foreach($data as $value)
                         // {
@@ -102,13 +116,38 @@ class controller extends Model
                         // print_r($Data);
                         // echo"$Data";
                         $table_name = "products";
-                        $this->insert_into($data,$table_name);
+                        $this->insert_into($data, $table_name);
 
                     }
                     require_once("View/Admin_Dashboard/header.php");
                     require_once("View/Admin_Dashboard/Product_Upload.php");
                     require_once("View/Admin_Dashboard/last.php");
                     break;
+
+                case '/Customers':
+                    $tname = "user_data";
+                    $response = $this->select($tname);
+                    require_once("View/Admin_Dashboard/header.php");
+                    require_once("View/Admin_Dashboard/customers.php");
+                    require_once("View/Admin_Dashboard/last.php");
+                    break;
+                case '/Products':
+                    $response = $this->select("products");
+                    require_once("View/Admin_Dashboard/header.php");
+                    require_once("View/Admin_Dashboard/product_table.php");
+                    require_once("View/Admin_Dashboard/last.php");
+                    break;
+
+
+                case '/checkout':
+                    if(isset($_REQUEST['Product_ID']))
+                    {
+                       print_r($_REQUEST);
+                    }
+                    require_once("View/header.php");
+                    require_once("View/checkout.php");
+                    require_once("View/footer.php");
+
             }
 
         } else {

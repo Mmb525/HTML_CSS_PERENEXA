@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="Assets/Admin_Assets/media_queries.css">
 
     <link rel="shortcut icon" href="Assets/images/favicon.png" type="image/x-icon">
-    <script src="Assets/Admin_Assets/index.js"></script>
+    <!-- <script defer src="Assets/Admin_Assets/index.js"></script> -->
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="#">
+                <a href="Customers">
                     <span class="material-icons-sharp">
                         perm_identity
                     </span>
@@ -46,7 +46,7 @@
                     <h3>Order</h3>
                 </a>
 
-                <a href="#">
+                <a href="Products">
                     <span class="material-icons-sharp">
                         inventory
                     </span>

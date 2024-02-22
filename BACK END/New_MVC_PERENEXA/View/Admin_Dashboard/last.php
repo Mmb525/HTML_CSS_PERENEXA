@@ -9,7 +9,7 @@
         </div>
         <div class="profile">
             <div class="info">
-                <p>Hey, <b>M Bubai</b></p>
+                <p>Hey, <b><?php echo $_COOKIE['Username'] ;?></b></p>
                 <small class="text-muted">Admin</small>
             </div>
             <div class="profile-photo">
@@ -19,3 +19,6 @@
     </div>
 </div>
 <!-- ------------END OF TOP----------------- -->
+
+
+<script  src="Assets/Admin_Assets/index.js"></script>

@@ -1,10 +1,9 @@
 <?php
 
 if (isset($_REQUEST['Submit'])) {
-    setcookie("Username", $_REQUEST['User_Name'], time() + 3600);
+    
 
 }
-
 
 
 ?>
