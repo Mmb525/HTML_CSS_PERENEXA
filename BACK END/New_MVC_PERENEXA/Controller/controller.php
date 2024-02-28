@@ -17,11 +17,11 @@ class controller extends Model
             switch ($_SERVER['PATH_INFO']) {
                 case '/home':
                     require_once("View/header.php");
-                    require_once("view/home/hero_section.php");
-                    require_once("view/home/explor.php");
-                    require_once("view/home/chooseus.php");
-                    require_once("view/home/popular.php");
-                    require_once("view/home/testimonial.php");
+                    require_once("View/home/hero_section.php");
+                    require_once("View/home/explor.php");
+                    require_once("View/home/chooseus.php");
+                    require_once("View/home/popular.php");
+                    require_once("View/home/testimonial.php");
                     require_once("View/footer.php");
                     break;
                 case '/Registration':
