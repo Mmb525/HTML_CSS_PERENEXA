@@ -81,7 +81,7 @@ class controller extends Model
                     require_once("View/footer.php");
                     break;
 
-                case '/cart':
+                case '/cart-section':
                     //     print_r($_REQUEST);
                     $data = $this->selectwhere("products", $_REQUEST);
                     require_once("View/header.php");
